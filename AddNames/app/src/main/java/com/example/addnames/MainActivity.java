@@ -31,16 +31,5 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         listViewFragment = getSupportFragmentManager().findFragmentById(R.id.listViewFrag);
-
-        if (savedInstanceState != null){
-            listViewFragment = getSupportFragmentManager().getFragment(savedInstanceState, "listFragment");
-        }
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-
-        getSupportFragmentManager().putFragment(outState, "listFragment", listViewFragment);
     }
 }

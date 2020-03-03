@@ -36,6 +36,8 @@ public class ListViewFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        setRetainInstance(true);
+
         View view = inflater.inflate(R.layout.fragment_list_view, container, false);
 
         listView = view.findViewById(R.id.listView);
@@ -46,23 +48,4 @@ public class ListViewFragment extends Fragment {
 
         return view;
     }
-
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        if (savedInstanceState != null) {
-            listItems = savedInstanceState.getStringArrayList("listItems");
-        }
-    }
-
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-
-        outState.putStringArrayList("listItems", listItems);
-    }
-
 }
