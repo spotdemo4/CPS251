@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/main">
+
+    <fragment
+        android:id="@+id/main"
+        android:name="com.example.navigation.main"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_main_to_fragmentB"
+            app:destination="@id/fragmentB" />
+        <action
+            android:id="@+id/action_main_to_fragmentA"
+            app:destination="@id/fragmentA" />
+        <action
+            android:id="@+id/action_main_to_fragmentC"
+            app:destination="@id/fragmentC" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentA"
+        android:name="com.example.navigation.FragmentA"
+        android:label="fragment_"
+        tools:layout="@layout/fragment_" >
+        <argument android:name="imageID"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentB"
+        android:name="com.example.navigation.FragmentB"
+        android:label="fragment_fragment_b"
+        tools:layout="@layout/fragment_fragment_b" >
+        <argument android:name="imageID"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentC"
+        android:name="com.example.navigation.FragmentC"
+        android:label="fragment_fragment_c"
+        tools:layout="@layout/fragment_fragment_c" >
+        <argument
+            android:name="imageID"
+            app:argType="integer" />
+    </fragment>
+</navigation>

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">navigation</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fragatitle">Fragment A</string>
+    <string name="fragbtitle">Fragment B</string>
+    <string name="fragctitle">Fragment C</string>
+    <string name="tofragatitle">To Fragment A</string>
+    <string name="tofragbtitle">To Fragment B</string>
+    <string name="tofragctitle">To Fragment C</string>
+    <string name="desc">doge</string>
+</resources>
