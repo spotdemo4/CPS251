@@ -16,27 +16,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
-            android:visibility="gone">
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Product ID"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/productID"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Not assigned"
-                android:textSize="18sp" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
             android:gravity="center">
 
             <EditText
@@ -44,8 +23,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Enter Contact Name"
+                android:hint="@string/contact_hint"
                 android:inputType="textPersonName"
+                android:importantForAutofill="no"
                 android:textSize="18sp" />
         </TableRow>
 
@@ -60,8 +40,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Enter Contact Phone"
+                android:hint="@string/phone_hint"
                 android:inputType="phone"
+                android:importantForAutofill="no"
                 android:textSize="18sp" />
 
         </TableRow>
@@ -71,6 +52,6 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/product_recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1" />
 </LinearLayout>

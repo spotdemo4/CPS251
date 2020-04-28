@@ -7,6 +7,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     android:clickable="true"
+    android:focusable="true"
     android:foreground="?selectableItemBackground"
     app:cardBackgroundColor="#81C784"
     app:cardCornerRadius="12dp"
@@ -23,6 +24,7 @@
             android:id="@+id/item_image"
             android:layout_width="85dp"
             android:layout_height="87dp"
+            android:contentDescription="@string/delete_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@android:drawable/btn_dialog" />
@@ -39,6 +41,7 @@
             android:id="@+id/contactNumber"
             android:layout_width="233dp"
             android:layout_height="30dp"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/contactName" />
     </androidx.constraintlayout.widget.ConstraintLayout>

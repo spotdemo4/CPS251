@@ -16,7 +16,7 @@ public abstract class ProductRoomDatabase extends RoomDatabase {
         if (INSTANCE == null) {
             synchronized (ProductRoomDatabase.class) {
                 if (INSTANCE == null) {
-                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), ProductRoomDatabase.class, "contact_database").build();
+                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), ProductRoomDatabase.class, "contacts").build();
                 }
             }
         }

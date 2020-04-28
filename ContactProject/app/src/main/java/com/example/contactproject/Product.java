@@ -5,15 +5,15 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "products")
+@Entity(tableName = "contacts")
 public class Product {
 
     @PrimaryKey(autoGenerate = true)
     @NonNull
-    @ColumnInfo(name = "productId")
+    @ColumnInfo(name = "contactId")
     private int id;
 
-    @ColumnInfo(name = "productName")
+    @ColumnInfo(name = "contactName")
     private String name;
     private String quantity;
 

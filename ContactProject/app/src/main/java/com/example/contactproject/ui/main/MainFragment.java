@@ -28,14 +28,12 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.contactproject.R;
-import com.example.contactproject.ui.main.ProductListAdapter;
 
 public class MainFragment extends Fragment {
 
     private MainViewModel mViewModel;
     private ProductListAdapter adapter;
 
-    private TextView productId;
     private EditText productName;
     private EditText productQuantity;
 
@@ -56,66 +54,19 @@ public class MainFragment extends Fragment {
         setHasOptionsMenu(true);
         mViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
 
-        productId = getView().findViewById(R.id.productID);
         productName = getView().findViewById(R.id.productName);
         productQuantity = getView().findViewById(R.id.productQuantity);
 
         System.out.println("THE ID IS: " + this.getId());
 
-        //listenerSetup();
         observerSetup();
         recyclerSetup();
     }
 
     private void clearFields() {
-        productId.setText("");
         productName.setText("");
         productQuantity.setText("");
     }
-
-    /*
-    //Button listeners
-    private void listenerSetup() {
-
-        Button addButton = getView().findViewById(R.id.addButton);
-        Button findButton = getView().findViewById(R.id.findButton);
-        Button deleteButton = getView().findViewById(R.id.deleteButton);
-
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                String name = productName.getText().toString();
-                String quantity = productQuantity.getText().toString();
-
-                if (!name.equals("") && !quantity.equals("")) {
-                    Product product = new Product(name, quantity);
-                    mViewModel.insertProduct(product);
-                    clearFields();
-                } else {
-                    productId.setText("Incomplete information");
-                }
-            }
-        });
-
-        findButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mViewModel.findProduct(productName.getText().toString());
-            }
-        });
-
-        deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mViewModel.deleteProduct(productName.getText().toString());
-                clearFields();
-            }
-        });
-    }
-     */
-
-
 
     private void observerSetup() {
 
@@ -130,10 +81,10 @@ public class MainFragment extends Fragment {
             @Override
             public void onChanged(@Nullable final List<Product> products) {
                 if (products.size() > 0) {
-                    productId.setText(String.format(Locale.US, "%d", products.get(0).getId()));
                     adapter.setProductList(products);
                 } else {
-                    productId.setText("No Match");
+                    LayoutInflater inflater = getLayoutInflater();
+                    showToast(inflater, "No matches found");
                 }
             }
         });
@@ -147,7 +98,7 @@ public class MainFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-        adapter.setOnItemClickListner(new ProductListAdapter.onItemClickListner() {
+        adapter.setOnItemClickListener(new ProductListAdapter.onItemClickListener() {
             @Override
             public void onClick(String str){
                 mViewModel.deleteProduct(str);
@@ -171,29 +122,14 @@ public class MainFragment extends Fragment {
             clearFields();
         } else {
             LayoutInflater inflater = getLayoutInflater();
-            View layout = inflater.inflate(R.layout.custom_toast, (ViewGroup) getActivity().findViewById(R.id.custom_toast_container));
-            TextView text = (TextView) layout.findViewById(R.id.text);
-            text.setText("Incomplete information :(");
-            Toast toast = new Toast(getActivity().getApplicationContext());
-            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-            toast.setView(layout);
-            toast.setDuration(Toast.LENGTH_LONG);
-            toast.show();
-            //productId.setText("Incomplete information");
+            showToast(inflater, "You must enter a name and phone number");
         }
     }
 
     public void findContact() {
-        if (productName.getText().equals("")){
+        if (productName.getText().toString().matches("")){
             LayoutInflater inflater = getLayoutInflater();
-            View layout = inflater.inflate(R.layout.custom_toast, (ViewGroup) getActivity().findViewById(R.id.custom_toast_container));
-            TextView text = (TextView) layout.findViewById(R.id.text);
-            text.setText("Incomplete information :(");
-            Toast toast = new Toast(getActivity().getApplicationContext());
-            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-            toast.setView(layout);
-            toast.setDuration(Toast.LENGTH_LONG);
-            toast.show();
+            showToast(inflater, "You must enter a name");
         } else {
             mViewModel.findProduct(productName.getText().toString());
         }
@@ -219,6 +155,17 @@ public class MainFragment extends Fragment {
             }
         });
         adapter.setProductList(products);
+    }
+
+    private void showToast(LayoutInflater inflater, String toastText){
+        View layout = inflater.inflate(R.layout.custom_toast, (ViewGroup) getActivity().findViewById(R.id.custom_toast_container));
+        TextView text = layout.findViewById(R.id.text);
+        text.setText(" " + toastText);
+        Toast toast = new Toast(getActivity().getApplicationContext());
+        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+        toast.setView(layout);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.show();
     }
 
 

@@ -14,13 +14,13 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
     private int productItemLayout;
     private List<Product> productList;
-    onItemClickListner onItemClickListner;
+    onItemClickListener onItemClickListener;
 
-    public void setOnItemClickListner(ProductListAdapter.onItemClickListner onItemClickListner) {
-        this.onItemClickListner = onItemClickListner;
+    public void setOnItemClickListener(ProductListAdapter.onItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
     }
 
-    public interface onItemClickListner{
+    public interface onItemClickListener{
         void onClick(String str);//pass your object types.
     }
 
@@ -54,7 +54,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         number.setText(productList.get(listPosition).getQuantity());
         img.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                onItemClickListner.onClick(productList.get(listPosition).getName());
+                onItemClickListener.onClick(productList.get(listPosition).getName());
             }
         });
     }

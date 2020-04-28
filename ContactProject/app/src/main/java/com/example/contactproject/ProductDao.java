@@ -13,12 +13,12 @@ public interface ProductDao {
     @Insert
     void insertProduct(Product product);
 
-    @Query("SELECT * FROM products WHERE productName LIKE '%' || :name || '%'")
+    @Query("SELECT * FROM contacts WHERE contactName LIKE '%' || :name || '%'")
     List<Product> findProduct(String name);
 
-    @Query("DELETE FROM products WHERE productName = :name")
+    @Query("DELETE FROM contacts WHERE contactName = :name")
     void deleteProduct(String name);
 
-    @Query("SELECT * FROM products")
+    @Query("SELECT * FROM contacts")
     LiveData<List<Product>> getAllProducts();
 }

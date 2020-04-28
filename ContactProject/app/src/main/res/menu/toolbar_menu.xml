@@ -7,22 +7,22 @@
 
     <item
         android:id="@+id/show_all_contacts"
-        android:title="Show All Contacts"
-        app:showAsAction="never"/>
+        android:title="@string/show_contacts"
+        app:showAsAction="never" />
     <item
         android:id="@+id/add_contact"
-        android:title="Add Contact"
-        app:showAsAction="never"/>
+        android:title="@string/add_contacts"
+        app:showAsAction="never" />
     <item
         android:id="@+id/find_contact"
-        android:title="Find Contact"
-        app:showAsAction="never"/>
+        android:title="@string/find_contacts"
+        app:showAsAction="never" />
     <item
         android:id="@+id/sort_a_z"
-        android:title="Sort Contacts A - Z"
-        app:showAsAction="never"/>
+        android:title="@string/sort_az"
+        app:showAsAction="never" />
     <item
         android:id="@+id/sort_z_a"
-        android:title="Sort Contacts Z - A"
-        app:showAsAction="never"/>
+        android:title="@string/sort_za"
+        app:showAsAction="never" />
 </menu>
